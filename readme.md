@@ -16,6 +16,9 @@ Documentation for the Repo can be found on the [Dingo API Repo](https://github.c
 
 More about JWT Authentication can be found on the [JWT Auth Repo](https://github.com/tymondesigns/jwt-auth/wiki)
 
+## Question
+Any question about this repo please send me at info@nguyenhats.com
+
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
