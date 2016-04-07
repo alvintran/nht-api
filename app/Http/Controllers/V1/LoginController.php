@@ -14,7 +14,6 @@ class LoginController extends Controller
 	public function __construct(JWTAuth $jwtAuth)
 	{
 	    $this->jwtAuth = $jwtAuth;
-	    $this->gm = $gm;
 	}
 
 	public function index(Request $request)
