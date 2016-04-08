@@ -5,10 +5,13 @@ namespace App\Http\Controllers\V1;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Dingo\Api\Routing\Helpers;
 use Tymon\JWTAuth\JWTAuth;
 
 class LoginController extends Controller
 {
+	use Helpers;
+
 	private $jwtAuth;
 
 	public function __construct(JWTAuth $jwtAuth)

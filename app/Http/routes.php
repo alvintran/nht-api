@@ -19,7 +19,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function($api) {
 	// Get token
-	$api->get('login', [
+	$api->post('login', [
 		'as' => 'login',
 		'uses' => 'App\Http\Controllers\V1\LoginController@index'
 	]);
