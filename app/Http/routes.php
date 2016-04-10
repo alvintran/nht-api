@@ -26,8 +26,13 @@ $api->version('v1', function($api) {
 
 	// All requests must be authorized
 	$api->group(['middleware' => 'api.auth', 'providers' => ['jwt']], function($api) {
+
+		// User resources
 		resource('/users', 'UserController', $api);
-		resource('/group_members', 'GroupMemberController', $api);
+
+		// ClientGroup resources
+		resource('/cgroups', 'ClientGroupController', $api);
+		$api->get('/cgroups/{$group_id}/users', 'App\Http\Controllers\V1\ClientGroupController@getUsersOfGroup');
 	});
 });
 

@@ -1,89 +1,39 @@
-<?php
-namespace App\Http\Controllers\V1;
+<?php namespace App\Http\Controllers\V1;
+/**
+ * User resource representation.
+ * @Resource("Users", uri="/users")
+ */
 
 use Illuminate\Http\Request;
-use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
+use App\Transformers\UserTransformer;
+use Dingo\Api\Routing\Helpers;
+use App\Helpers\Traits\RestfulTrait;
 use App\User;
 
 class UserController extends Controller
 {
-	use Helpers;
-
-   /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+    /**
+     * Sử dụng RestfulTrait để nhận các CURD functions
+     * Và luôn sử dụng Helpers trait cùng với RestfulTrait
      */
-    public function index()
-    {
-        $users = User::all();
-        return $users;
-    }
+	use Helpers, RestfulTrait;
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Resource model
+     * @var Eloquent - required
      */
-    public function create()
-    {
-        //
-    }
+    protected $model;
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Fratal transformer
+     * @var required
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    protected $transformer;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function __construct(User $user, UserTransformer $ut)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $this->model = $user;
+        $this->transformer = $ut;
     }
 }

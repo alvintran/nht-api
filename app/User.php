@@ -34,6 +34,11 @@ class User extends Model implements
         'password',
     ];
 
+    public function getName()
+    {
+        return $this->fullname ? $this->fullname : $this->last_name;
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

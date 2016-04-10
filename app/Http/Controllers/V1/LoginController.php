@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Authenticate user
+ */
 namespace App\Http\Controllers\V1;
 
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -19,6 +21,14 @@ class LoginController extends Controller
 	    $this->jwtAuth = $jwtAuth;
 	}
 
+	/**
+	 * Login to api
+	 *
+	 * @Post("/login")
+     * @Request({"email": "foo@bar.com", "password": "bar"})
+	 * @param  Request $request
+	 * @return json
+	 */
 	public function index(Request $request)
 	{
 		$credentials = $request->only(['email', 'password']);
